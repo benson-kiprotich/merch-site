@@ -15,6 +15,14 @@ class ProductControl extends React.Component {
     }));
   };
 
+  handleAddingNewProductToList = (newProduct) => {
+    const newMainProductList = this.state.mainTicketList.concat(newProduct);
+    this.setState({
+      mainTicketList: newMainProductList,
+      formVisibleOnPage: false,
+    });
+  };
+
   render() {
     return <div>Product Control</div>;
   }

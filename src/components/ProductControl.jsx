@@ -9,6 +9,12 @@ class ProductControl extends React.Component {
     };
   }
 
+  handleClick = () => {
+    this.setState((prevState) => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage,
+    }));
+  };
+
   render() {
     return <div>Product Control</div>;
   }

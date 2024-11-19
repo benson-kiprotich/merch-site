@@ -1,4 +1,6 @@
 import React from 'react';
+import NewProductForm from './NewProductForm';
+import ProductList from './ProductList';
 
 class ProductControl extends React.Component {
   constructor(props) {
@@ -16,15 +18,35 @@ class ProductControl extends React.Component {
   };
 
   handleAddingNewProductToList = (newProduct) => {
-    const newMainProductList = this.state.mainTicketList.concat(newProduct);
+    const newMainProductList = this.state.mainProductList.concat(newProduct);
     this.setState({
-      mainTicketList: newMainProductList,
+      mainProductList: newMainProductList,
       formVisibleOnPage: false,
     });
   };
 
   render() {
-    return <div>Product Control</div>;
+    let currentVisibleState = null;
+    let buttonText = null;
+    if (this.state.formVisibleOnPage) {
+      currentVisibleState = (
+        <NewProductForm
+          onNewProductCreation={this.handleAddingNewProductToList}
+        />
+      );
+      buttonText = 'Return to Product List';
+    } else {
+      currentVisibleState = (
+        <ProductList productList={this.state.mainProductList} />
+      );
+      buttonText = 'Add Product';
+    }
+    return (
+      <>
+        {currentVisibleState}
+        <button onClick={this.handleClick}>{buttonText}</button>
+      </>
+    );
   }
 }
 

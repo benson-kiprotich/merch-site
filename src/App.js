@@ -5,7 +5,7 @@ import ProductControl from './components/ProductControl';
 function App() {
   return (
     <>
-      <Header />
+      <Header>Merchant Site</Header>
       <ProductControl />
     </>
   );

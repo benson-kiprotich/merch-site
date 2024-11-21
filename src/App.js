@@ -1,12 +1,15 @@
 import './App.css';
 import Header from './components/Header';
+import PageContainer from './components/PageContainer';
 import ProductControl from './components/ProductControl';
 
 function App() {
   return (
     <>
-      <Header>Merchant Site</Header>
-      <ProductControl />
+      <PageContainer>
+        <Header>Merchant Site</Header>
+        <ProductControl />
+      </PageContainer>
     </>
   );
 }

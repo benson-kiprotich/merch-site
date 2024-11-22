@@ -1,6 +1,7 @@
 import React from 'react';
 import NewProductForm from './NewProductForm';
 import ProductTable from './ProductTable';
+import Button from './Button';
 
 class ProductControl extends React.Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class ProductControl extends React.Component {
     return (
       <>
         {currentVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <Button onClick={this.handleClick}>{buttonText}</Button>
       </>
     );
   }

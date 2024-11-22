@@ -32,11 +32,26 @@ class ProductControl extends React.Component {
     let updateProductIndex = this.state.mainProductList.findIndex(
       (product) => product.id === newProduct.id
     );
-    if (updateProductIndex !== -1) {
+    if (updateProductIndex > -1) {
       newMainProductList = this.state.mainProductList;
       newMainProductList[updateProductIndex] = newProduct;
     } else {
       newMainProductList = this.state.mainProductList.concat(newProduct);
+    }
+    this.setState({
+      mainProductList: newMainProductList,
+      formVisibleOnPage: false,
+    });
+  };
+
+  handleDeleteProduct = (productId) => {
+    let newMainProductList = this.state.mainProductList;
+    let removeProductIndex = this.state.mainProductList.findIndex(
+      (product) => product.id === productId
+    );
+
+    if (removeProductIndex > -1) {
+      newMainProductList.splice(removeProductIndex, 1);
     }
     this.setState({
       mainProductList: newMainProductList,
@@ -60,6 +75,7 @@ class ProductControl extends React.Component {
         <ProductTable
           products={this.state.mainProductList}
           toggleFormVisibility={this.handleClick}
+          deleteProduct={this.handleDeleteProduct}
         />
       );
       buttonText = 'Add Product';

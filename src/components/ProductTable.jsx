@@ -23,7 +23,7 @@ const EmptyMessage = styled.div`
 `;
 
 // ProductTable Component
-const ProductTable = ({ products, toggleFormVisibility }) => {
+const ProductTable = ({ products, toggleFormVisibility, deleteProduct }) => {
   return (
     <TableContainer>
       {products.length > 0 ? (
@@ -37,6 +37,7 @@ const ProductTable = ({ products, toggleFormVisibility }) => {
               quantity={product.quantity}
               description={product.description}
               toggleFormVisibility={toggleFormVisibility}
+              deleteProduct={deleteProduct}
             />
           ))}
         </StyledTable>
@@ -50,6 +51,7 @@ const ProductTable = ({ products, toggleFormVisibility }) => {
 ProductTable.prototype = {
   products: PropTypes.array,
   toggleFormVisibility: PropTypes.func,
+  deleteProduct: PropTypes.func,
 };
 
 export default ProductTable;

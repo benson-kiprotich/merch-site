@@ -48,6 +48,7 @@ function ProductTableRow({
   quantity,
   description,
   toggleFormVisibility,
+  deleteProduct,
 }) {
   return (
     <TableBody>
@@ -62,7 +63,7 @@ function ProductTableRow({
           >
             Update
           </ActionButton>
-          <ActionButton className="delete" onClick={() => {}}>
+          <ActionButton className="delete" onClick={() => deleteProduct(id)}>
             Delete
           </ActionButton>
         </td>
@@ -77,7 +78,7 @@ ProductTableRow.prototype = {
   desciption: PropTypes.string.isRequired,
   quantity: PropTypes.number,
   toggleFormVisibility: PropTypes.func,
-  deleteProductFunc: PropTypes.func,
+  deleteProduct: PropTypes.func,
 };
 
 export default ProductTableRow;

@@ -15,10 +15,9 @@ function ProductTableHeader() {
   return (
     <TableHeader>
       <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Category</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Description</th>
       </tr>
     </TableHeader>
   );

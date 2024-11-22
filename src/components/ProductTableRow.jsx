@@ -15,11 +15,10 @@ const TableBody = styled.tbody`
   }
 `;
 
-function ProductTableRow({ id, name, quantity, description }) {
+function ProductTableRow({ name, quantity, description }) {
   return (
     <TableBody>
       <tr>
-        <td>{id}</td>
         <td>{name}</td>
         <td>${quantity}</td>
         <td>{description}</td>
@@ -29,7 +28,6 @@ function ProductTableRow({ id, name, quantity, description }) {
 }
 
 ProductTableRow.prototype = {
-  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   desciption: PropTypes.string.isRequired,
   quantity: PropTypes.number,

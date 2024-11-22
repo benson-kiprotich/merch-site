@@ -18,6 +18,7 @@ function ProductTableHeader() {
         <th>Product Name</th>
         <th>Quantity</th>
         <th>Description</th>
+        <th>Actions</th>
       </tr>
     </TableHeader>
   );

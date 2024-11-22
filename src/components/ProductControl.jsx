@@ -1,5 +1,5 @@
 import React from 'react';
-import NewProductForm from './NewProductForm';
+import AddUpdateProductForm from './AddUpdateProductForm';
 import ProductTable from './ProductTable';
 import Button from './Button';
 
@@ -8,18 +8,36 @@ class ProductControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
+      product: {},
       mainProductList: [],
     };
   }
 
-  handleClick = () => {
+  handleClick = (productId = null) => {
+    let updateProduct = {};
+    if (productId != null) {
+      updateProduct = this.state.mainProductList.find(
+        (product) => product.id === productId
+      );
+    }
+    console.log('product: ', updateProduct);
     this.setState((prevState) => ({
       formVisibleOnPage: !prevState.formVisibleOnPage,
+      product: updateProduct,
     }));
   };
 
-  handleAddingNewProductToList = (newProduct) => {
-    const newMainProductList = this.state.mainProductList.concat(newProduct);
+  handleAddUpdateProduct = (newProduct) => {
+    let newMainProductList;
+    let updateProductIndex = this.state.mainProductList.findIndex(
+      (product) => product.id === newProduct.id
+    );
+    if (updateProductIndex !== -1) {
+      newMainProductList = this.state.mainProductList;
+      newMainProductList[updateProductIndex] = newProduct;
+    } else {
+      newMainProductList = this.state.mainProductList.concat(newProduct);
+    }
     this.setState({
       mainProductList: newMainProductList,
       formVisibleOnPage: false,
@@ -31,17 +49,22 @@ class ProductControl extends React.Component {
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
       currentVisibleState = (
-        <NewProductForm
-          onNewProductCreation={this.handleAddingNewProductToList}
+        <AddUpdateProductForm
+          addUpdateProduct={this.handleAddUpdateProduct}
+          updateProduct={this.state.product}
         />
       );
       buttonText = 'Return to Product List';
     } else {
       currentVisibleState = (
-        <ProductTable products={this.state.mainProductList} />
+        <ProductTable
+          products={this.state.mainProductList}
+          toggleFormVisibility={this.handleClick}
+        />
       );
       buttonText = 'Add Product';
     }
+
     return (
       <>
         {currentVisibleState}

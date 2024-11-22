@@ -23,7 +23,7 @@ const EmptyMessage = styled.div`
 `;
 
 // ProductTable Component
-const ProductTable = ({ products }) => {
+const ProductTable = ({ products, toggleFormVisibility }) => {
   return (
     <TableContainer>
       {products.length > 0 ? (
@@ -32,9 +32,11 @@ const ProductTable = ({ products }) => {
           {products.map((product) => (
             <ProductTableRow
               key={product.id}
+              id={product.id}
               name={product.name}
               quantity={product.quantity}
               description={product.description}
+              toggleFormVisibility={toggleFormVisibility}
             />
           ))}
         </StyledTable>
@@ -47,6 +49,7 @@ const ProductTable = ({ products }) => {
 
 ProductTable.prototype = {
   products: PropTypes.array,
+  toggleFormVisibility: PropTypes.func,
 };
 
 export default ProductTable;

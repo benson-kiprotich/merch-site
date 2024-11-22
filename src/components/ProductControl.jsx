@@ -1,6 +1,6 @@
 import React from 'react';
 import NewProductForm from './NewProductForm';
-import ProductList from './ProductList';
+import ProductTable from './ProductTable';
 
 class ProductControl extends React.Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class ProductControl extends React.Component {
       buttonText = 'Return to Product List';
     } else {
       currentVisibleState = (
-        <ProductList productList={this.state.mainProductList} />
+        <ProductTable products={this.state.mainProductList} />
       );
       buttonText = 'Add Product';
     }

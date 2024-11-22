@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ProductRow from './ProductRow';
+import ProductTableRow from './ProductTableRow';
+import ProductTableHeader from './ProductTableHeader';
 
 const TableContainer = styled.div`
   margin: 20px 0;
@@ -15,29 +16,6 @@ const StyledTable = styled.table`
   border-collapse: collapse;
 `;
 
-const TableHeader = styled.thead`
-  background-color: #007bff;
-  color: white;
-
-  th {
-    padding: 10px;
-    text-align: left;
-  }
-`;
-
-const TableBody = styled.tbody`
-  tr {
-    &:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-  }
-
-  td {
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-`;
-
 const EmptyMessage = styled.div`
   padding: 20px;
   text-align: center;
@@ -50,25 +28,16 @@ const ProductTable = ({ products }) => {
     <TableContainer>
       {products.length > 0 ? (
         <StyledTable>
-          <TableHeader>
-            <tr>
-              {/* <th>ID</th> */}
-              <th>Name</th>
-              <th>Price</th>
-              <th>Category</th>
-            </tr>
-          </TableHeader>
-          <TableBody>
-            {products.map((product) => (
-              <ProductRow
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                quantity={product.quantity}
-                description={product.description}
-              />
-            ))}
-          </TableBody>
+          <ProductTableHeader />
+          {products.map((product) => (
+            <ProductTableRow
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              quantity={product.quantity}
+              description={product.description}
+            />
+          ))}
         </StyledTable>
       ) : (
         <EmptyMessage>No products available</EmptyMessage>

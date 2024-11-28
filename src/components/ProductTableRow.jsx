@@ -41,6 +41,15 @@ const ActionButton = styled.button`
     }
   }
 
+  &.restock {
+    background-color: #8bff07;
+    color: white;
+
+    &:hover {
+      background-color: #00e022;
+    }
+  }
+
   &.delete {
     background-color: #dc3545;
     color: white;
@@ -58,6 +67,7 @@ function ProductTableRow({
   description,
   toggleFormVisibility,
   buyProduct,
+  restockProduct,
   deleteProduct,
 }) {
   return (
@@ -76,6 +86,9 @@ function ProductTableRow({
           <ActionButton className="buy" onClick={() => buyProduct(id)}>
             Buy
           </ActionButton>
+          <ActionButton className="restock" onClick={() => restockProduct(id)}>
+            Restock
+          </ActionButton>
           <ActionButton className="delete" onClick={() => deleteProduct(id)}>
             Delete
           </ActionButton>
@@ -92,6 +105,7 @@ ProductTableRow.prototype = {
   quantity: PropTypes.number,
   toggleFormVisibility: PropTypes.func,
   buyProduct: PropTypes.func,
+  restockProduct: PropTypes.func,
   deleteProduct: PropTypes.func,
 };
 

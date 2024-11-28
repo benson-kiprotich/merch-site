@@ -27,6 +27,7 @@ const ProductTable = ({
   products,
   toggleFormVisibility,
   buyProduct,
+  restockProduct,
   deleteProduct,
 }) => {
   return (
@@ -43,6 +44,7 @@ const ProductTable = ({
               description={product.description}
               toggleFormVisibility={toggleFormVisibility}
               buyProduct={buyProduct}
+              restockProduct={restockProduct}
               deleteProduct={deleteProduct}
             />
           ))}
@@ -58,6 +60,7 @@ ProductTable.prototype = {
   products: PropTypes.array,
   toggleFormVisibility: PropTypes.func,
   buyProduct: PropTypes.func,
+  restockProduct: PropTypes.func,
   deleteProduct: PropTypes.func,
 };
 

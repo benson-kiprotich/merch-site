@@ -20,7 +20,7 @@ class ProductControl extends React.Component {
         (product) => product.id === productId
       );
     }
-    console.log('product: ', updateProduct);
+
     this.setState((prevState) => ({
       formVisibleOnPage: !prevState.formVisibleOnPage,
       product: updateProduct,
@@ -68,6 +68,26 @@ class ProductControl extends React.Component {
     });
   };
 
+  handleRestockProduct = (productId) => {
+    let updatedProductList;
+    let updateProductIndex = this.state.mainProductList.findIndex(
+      (product) => product.id === productId
+    );
+
+    if (updateProductIndex > -1) {
+      updatedProductList = this.state.mainProductList;
+      let updateProduct = updatedProductList[updateProductIndex];
+      updateProduct.quantity += 10;
+    } else {
+      alert('Product does not exist');
+    }
+
+    this.setState({
+      mainProductList: updatedProductList,
+      formVisibleOnPage: false,
+    });
+  };
+
   handleDeleteProduct = (productId) => {
     let newMainProductList = this.state.mainProductList;
     let removeProductIndex = this.state.mainProductList.findIndex(
@@ -100,6 +120,7 @@ class ProductControl extends React.Component {
           products={this.state.mainProductList}
           toggleFormVisibility={this.handleClick}
           buyProduct={this.handleBuyProduct}
+          restockProduct={this.handleRestockProduct}
           deleteProduct={this.handleDeleteProduct}
         />
       );

@@ -32,6 +32,15 @@ const ActionButton = styled.button`
     }
   }
 
+  &.buy {
+    background-color: #076aff;
+    color: white;
+
+    &:hover {
+      background-color: #0052e0;
+    }
+  }
+
   &.delete {
     background-color: #dc3545;
     color: white;
@@ -48,13 +57,14 @@ function ProductTableRow({
   quantity,
   description,
   toggleFormVisibility,
+  buyProduct,
   deleteProduct,
 }) {
   return (
     <TableBody>
       <tr>
         <td>{name}</td>
-        <td>${quantity}</td>
+        <td>{quantity > 0 ? quantity : 'Out of stock'}</td>
         <td>{description}</td>
         <td>
           <ActionButton
@@ -62,6 +72,9 @@ function ProductTableRow({
             onClick={() => toggleFormVisibility(id)}
           >
             Update
+          </ActionButton>
+          <ActionButton className="buy" onClick={() => buyProduct(id)}>
+            Buy
           </ActionButton>
           <ActionButton className="delete" onClick={() => deleteProduct(id)}>
             Delete
@@ -78,6 +91,7 @@ ProductTableRow.prototype = {
   desciption: PropTypes.string.isRequired,
   quantity: PropTypes.number,
   toggleFormVisibility: PropTypes.func,
+  buyProduct: PropTypes.func,
   deleteProduct: PropTypes.func,
 };
 

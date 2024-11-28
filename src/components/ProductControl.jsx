@@ -44,6 +44,30 @@ class ProductControl extends React.Component {
     });
   };
 
+  handleBuyProduct = (productId) => {
+    let updatedProductList;
+    let updateProductIndex = this.state.mainProductList.findIndex(
+      (product) => product.id === productId
+    );
+
+    if (updateProductIndex > -1) {
+      updatedProductList = this.state.mainProductList;
+      let updateProduct = updatedProductList[updateProductIndex];
+      if (updateProduct.quantity > 0) {
+        updateProduct.quantity--;
+      } else {
+        alert('Out of stock');
+      }
+    } else {
+      alert('Product does not exist');
+    }
+
+    this.setState({
+      mainProductList: updatedProductList,
+      formVisibleOnPage: false,
+    });
+  };
+
   handleDeleteProduct = (productId) => {
     let newMainProductList = this.state.mainProductList;
     let removeProductIndex = this.state.mainProductList.findIndex(
@@ -75,6 +99,7 @@ class ProductControl extends React.Component {
         <ProductTable
           products={this.state.mainProductList}
           toggleFormVisibility={this.handleClick}
+          buyProduct={this.handleBuyProduct}
           deleteProduct={this.handleDeleteProduct}
         />
       );

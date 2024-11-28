@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/benson-kiprotich/merch-site.git/static/css/main.f855e6bc.css",
-    "main.js": "/benson-kiprotich/merch-site.git/static/js/main.ec642586.js",
-    "static/js/453.a1fd7f8a.chunk.js": "/benson-kiprotich/merch-site.git/static/js/453.a1fd7f8a.chunk.js",
-    "index.html": "/benson-kiprotich/merch-site.git/index.html",
-    "main.f855e6bc.css.map": "/benson-kiprotich/merch-site.git/static/css/main.f855e6bc.css.map",
-    "main.ec642586.js.map": "/benson-kiprotich/merch-site.git/static/js/main.ec642586.js.map",
-    "453.a1fd7f8a.chunk.js.map": "/benson-kiprotich/merch-site.git/static/js/453.a1fd7f8a.chunk.js.map"
+    "main.css": "/merch-site/static/css/main.f855e6bc.css",
+    "main.js": "/merch-site/static/js/main.cb6119fa.js",
+    "static/js/453.a1fd7f8a.chunk.js": "/merch-site/static/js/453.a1fd7f8a.chunk.js",
+    "index.html": "/merch-site/index.html",
+    "main.f855e6bc.css.map": "/merch-site/static/css/main.f855e6bc.css.map",
+    "main.cb6119fa.js.map": "/merch-site/static/js/main.cb6119fa.js.map",
+    "453.a1fd7f8a.chunk.js.map": "/merch-site/static/js/453.a1fd7f8a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.ec642586.js"
+    "static/js/main.cb6119fa.js"
   ]
 }

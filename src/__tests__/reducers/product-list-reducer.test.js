@@ -9,6 +9,21 @@ describe('productListReducer', () => {
     id: 1,
   };
 
+  const currentState = {
+    1: {
+      name: 'test product',
+      quantity: 3,
+      description: 'test description',
+      id: 1,
+    },
+    2: {
+      name: 'another product',
+      quantity: 4,
+      description: 'another description',
+      id: 2,
+    },
+  };
+
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(productListReducer({}, { type: null })).toEqual({});
   });
@@ -29,6 +44,22 @@ describe('productListReducer', () => {
         quantity: quantity,
         description: description,
         id: id,
+      },
+    });
+  });
+
+  test('should delete a product successfully', () => {
+    action = {
+      type: 'DELETE_PRODUCT',
+      id: 1,
+    };
+
+    expect(productListReducer(currentState, action)).toEqual({
+      2: {
+        name: 'another product',
+        quantity: 4,
+        description: 'another description',
+        id: 2,
       },
     });
   });

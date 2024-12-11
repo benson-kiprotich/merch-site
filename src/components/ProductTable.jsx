@@ -32,12 +32,12 @@ const ProductTable = ({
 }) => {
   return (
     <TableContainer>
-      {products.length > 0 ? (
+      {Object.keys(products).length > 0 ? (
         <StyledTable>
           <ProductTableHeader />
-          {products.map((product) => (
+          {Object.entries(products).map(([key, product]) => (
             <ProductTableRow
-              key={product.id}
+              key={key}
               id={product.id}
               name={product.name}
               quantity={product.quantity}

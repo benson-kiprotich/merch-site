@@ -33,6 +33,8 @@ function AddUpdateProductForm({ addUpdateProduct, updateProduct }) {
     quantity: '',
     description: '',
   });
+  const [btnText, setBtnText] = useState('Add');
+  const [formTitle, setFormTitle] = useState('Add New Product');
 
   useEffect(() => {
     if (updateProduct !== undefined) {
@@ -41,6 +43,8 @@ function AddUpdateProductForm({ addUpdateProduct, updateProduct }) {
         quantity: updateProduct.quantity,
         description: updateProduct.description,
       });
+      setBtnText('Update');
+      setFormTitle('Update Product');
     }
   }, [updateProduct]);
 
@@ -71,7 +75,7 @@ function AddUpdateProductForm({ addUpdateProduct, updateProduct }) {
   }
   return (
     <FormContainer>
-      <FormTitle>Add New Product</FormTitle>
+      <FormTitle>{formTitle}</FormTitle>
       <form onSubmit={handleSubmit}>
         <FormField>
           <Label htmlFor="name">Product Name</Label>
@@ -105,7 +109,7 @@ function AddUpdateProductForm({ addUpdateProduct, updateProduct }) {
             onChange={handleChange}
           />
         </FormField>
-        <Button type="submit">Add</Button>
+        <Button type="submit">{btnText}</Button>
       </form>
     </FormContainer>
   );

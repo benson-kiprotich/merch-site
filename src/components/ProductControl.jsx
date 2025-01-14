@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import AddUpdateProductForm from './AddUpdateProductForm';
 import ProductTable from './ProductTable';
 import Button from './Button';
@@ -112,4 +114,5 @@ class ProductControl extends React.Component {
   }
 }
 
+ProductControl = connect()(ProductControl);
 export default ProductControl;

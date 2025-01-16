@@ -1,6 +1,6 @@
 # _Merch Site_
 
-_28th November 2024_
+_16th January 2025_
 
 #### _A web application that allows merchants to sell their products_
 
@@ -45,6 +45,7 @@ _There are no known bugs at this time._
 - Webpack
 - React
 - CSS
+- Redux
 
 ## Support and contact details
 

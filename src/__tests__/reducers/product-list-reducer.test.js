@@ -1,4 +1,5 @@
 import productListReducer from '../../reducers/product-list-reducer';
+import * as c from './../../actions/ActionTypes';
 
 describe('productListReducer', () => {
   let action;
@@ -31,7 +32,7 @@ describe('productListReducer', () => {
   test('Should successfully add new product data to mainProductList', () => {
     const { name, quantity, description, id } = productData;
     action = {
-      type: 'ADD_PRODUCT',
+      type: c.ADD_PRODUCT,
       name: name,
       quantity: quantity,
       description: description,
@@ -50,7 +51,7 @@ describe('productListReducer', () => {
 
   test('should delete a product successfully', () => {
     action = {
-      type: 'DELETE_PRODUCT',
+      type: c.DELETE_PRODUCT,
       id: 1,
     };
 
@@ -66,7 +67,7 @@ describe('productListReducer', () => {
 
   test('should reduce product quantity by one', () => {
     action = {
-      type: 'BUY_PRODUCT',
+      type: c.BUY_PRODUCT,
       id: 1,
     };
 
@@ -88,7 +89,7 @@ describe('productListReducer', () => {
 
   test('should add product quantity by 10', () => {
     action = {
-      type: 'RESTOCK_PRODUCT',
+      type: c.RESTOCK_PRODUCT,
       id: 1,
     };
 

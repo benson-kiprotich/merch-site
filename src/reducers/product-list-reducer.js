@@ -22,7 +22,7 @@ const reducer = (state = {}, action) => {
 
     case c.RESTOCK_PRODUCT:
       const restockProduct = { ...state[id] };
-      restockProduct.quantity += 10;
+      restockProduct.quantity = Number(restockProduct.quantity) + 10;
       return Object.assign({}, state, {
         [id]: restockProduct,
       });

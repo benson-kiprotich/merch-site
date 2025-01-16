@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import reducer from './reducers/product-list-reducer';
 
 const store = createStore(reducer);
-store.subscribe(() => console.log(store.getState()));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

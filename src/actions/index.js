@@ -8,6 +8,11 @@ export const buyProduct = (id) => ({
   id,
 });
 
+export const restockProduct = (id) => ({
+  type: 'RESTOCK_PRODUCT',
+  id,
+});
+
 export const addProduct = (product) => {
   const { name, quantity, description, id } = product;
   return {

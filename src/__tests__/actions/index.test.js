@@ -15,6 +15,13 @@ describe('Merch Site actions', () => {
     });
   });
 
+  it('restockProduct should create RESTOCK_PRODUCT action', () => {
+    expect(actions.restockProduct(1)).toEqual({
+      type: 'RESTOCK_PRODUCT',
+      id: 1,
+    });
+  });
+
   it('addProduct should create ADD_PRODUCT action', () => {
     expect(
       actions.addProduct({

@@ -45,17 +45,6 @@ class ProductControl extends React.Component {
   };
 
   handleBuyProduct = (productId) => {
-    // let updatedProductList = this.state.mainProductList;
-    // let updateProduct = updatedProductList[productId];
-    // if (updateProduct) {
-    //   if (updateProduct.quantity > 0) {
-    //     updateProduct.quantity--;
-    //   } else {
-    //     alert('Out of stock');
-    //   }
-    // } else {
-    //   alert('Product does not exist');
-    // }
     const { dispatch } = this.props;
     const action = {
       type: 'BUY_PRODUCT',
@@ -64,7 +53,6 @@ class ProductControl extends React.Component {
     dispatch(action);
 
     this.setState({
-      // mainProductList: updatedProductList,
       formVisibleOnPage: false,
     });
   };

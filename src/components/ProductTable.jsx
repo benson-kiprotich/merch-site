@@ -40,7 +40,7 @@ const ProductTable = ({
               key={key}
               id={product.id}
               name={product.name}
-              quantity={product.quantity}
+              quantity={Number(product.quantity)}
               description={product.description}
               toggleFormVisibility={toggleFormVisibility}
               buyProduct={buyProduct}
@@ -56,7 +56,7 @@ const ProductTable = ({
   );
 };
 
-ProductTable.propTypes = {
+ProductTable.prototype = {
   products: PropTypes.object,
   toggleFormVisibility: PropTypes.func,
   buyProduct: PropTypes.func,

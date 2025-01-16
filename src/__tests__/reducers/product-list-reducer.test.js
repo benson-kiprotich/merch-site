@@ -63,4 +63,26 @@ describe('productListReducer', () => {
       },
     });
   });
+
+  test('should reduce product quantity by one', () => {
+    action = {
+      type: 'BUY_PRODUCT',
+      id: 1,
+    };
+
+    expect(productListReducer(currentState, action)).toEqual({
+      1: {
+        name: 'test product',
+        quantity: 2,
+        description: 'test description',
+        id: 1,
+      },
+      2: {
+        name: 'another product',
+        quantity: 4,
+        description: 'another description',
+        id: 2,
+      },
+    });
+  });
 });

@@ -10,6 +10,14 @@ const reducer = (state = {}, action) => {
           id: id,
         },
       });
+
+    case 'BUY_PRODUCT':
+      const buyProduct = { ...state[id] };
+      buyProduct.quantity = buyProduct.quantity - 1;
+      return Object.assign({}, state, {
+        [id]: buyProduct,
+      });
+
     case 'DELETE_PRODUCT':
       let newState = { ...state };
       delete newState[id];

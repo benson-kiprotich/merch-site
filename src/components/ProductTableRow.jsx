@@ -102,7 +102,7 @@ ProductTableRow.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  quantity: PropTypes.string.isRequired,
+  quantity: PropTypes.number,
   toggleFormVisibility: PropTypes.func,
   buyProduct: PropTypes.func,
   restockProduct: PropTypes.func,

@@ -30,7 +30,7 @@ const FormField = styled.div`
 function AddUpdateProductForm({ addUpdateProduct, updateProduct }) {
   const [product, setProduct] = useState({
     name: '',
-    quantity: '',
+    quantity: 0,
     description: '',
   });
   const [btnText, setBtnText] = useState('Add');
@@ -68,7 +68,7 @@ function AddUpdateProductForm({ addUpdateProduct, updateProduct }) {
         });
       }
 
-      setProduct({ name: '', quantity: '', description: '' }); // reset form
+      setProduct({ name: '', quantity: 0, description: '' }); // reset form
     } else {
       alert('Please fill in all fields.');
     }

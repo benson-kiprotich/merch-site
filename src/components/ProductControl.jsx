@@ -51,7 +51,7 @@ class ProductControl extends React.Component {
 
   handleRestockProduct = (productId) => {
     const { dispatch } = this.props;
-    const action = a.restockProduct();
+    const action = a.restockProduct(productId);
     dispatch(action);
 
     this.setState({

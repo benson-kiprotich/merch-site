@@ -8,6 +8,13 @@ describe('Merch Site actions', () => {
     });
   });
 
+  it('buyProduct should create BUY_PRODUCT action', () => {
+    expect(actions.buyProduct(1)).toEqual({
+      type: 'BUY_PRODUCT',
+      id: 1,
+    });
+  });
+
   it('addProduct should create ADD_PRODUCT action', () => {
     expect(
       actions.addProduct({

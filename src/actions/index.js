@@ -3,6 +3,11 @@ export const deleteProduct = (id) => ({
   id,
 });
 
+export const buyProduct = (id) => ({
+  type: 'BUY_PRODUCT',
+  id,
+});
+
 export const addProduct = (product) => {
   const { name, quantity, description, id } = product;
   return {

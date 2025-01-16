@@ -85,4 +85,26 @@ describe('productListReducer', () => {
       },
     });
   });
+
+  test('should add product quantity by 10', () => {
+    action = {
+      type: 'RESTOCK_PRODUCT',
+      id: 1,
+    };
+
+    expect(productListReducer(currentState, action)).toEqual({
+      1: {
+        name: 'test product',
+        quantity: 13,
+        description: 'test description',
+        id: 1,
+      },
+      2: {
+        name: 'another product',
+        quantity: 4,
+        description: 'another description',
+        id: 2,
+      },
+    });
+  });
 });

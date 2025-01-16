@@ -13,9 +13,16 @@ const reducer = (state = {}, action) => {
 
     case 'BUY_PRODUCT':
       const buyProduct = { ...state[id] };
-      buyProduct.quantity = buyProduct.quantity - 1;
+      buyProduct.quantity -= 1;
       return Object.assign({}, state, {
         [id]: buyProduct,
+      });
+
+    case 'RESTOCK_PRODUCT':
+      const restockProduct = { ...state[id] };
+      restockProduct.quantity += 10;
+      return Object.assign({}, state, {
+        [id]: restockProduct,
       });
 
     case 'DELETE_PRODUCT':

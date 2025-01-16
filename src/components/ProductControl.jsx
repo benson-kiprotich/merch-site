@@ -58,13 +58,6 @@ class ProductControl extends React.Component {
   };
 
   handleRestockProduct = (productId) => {
-    // let updatedProductList = this.state.mainProductList;
-    // let updateProduct = updatedProductList[productId];
-    // if (updateProduct) {
-    //   updateProduct.quantity = Number(updateProduct.quantity) + 10;
-    // } else {
-    //   alert('Product does not exist');
-    // }
     const { dispatch } = this.props;
     const action = {
       type: 'RESTOCK_PRODUCT',
@@ -73,14 +66,11 @@ class ProductControl extends React.Component {
     dispatch(action);
 
     this.setState({
-      // mainProductList: updatedProductList,
       formVisibleOnPage: false,
     });
   };
 
   handleDeleteProduct = (productId) => {
-    // let newMainProductList = this.state.mainProductList;
-    // delete newMainProductList[productId];
     const { dispatch } = this.props;
     const action = {
       type: 'DELETE_PRODUCT',
@@ -88,7 +78,6 @@ class ProductControl extends React.Component {
     };
     dispatch(action);
     this.setState({
-      // mainProductList: newMainProductList,
       formVisibleOnPage: false,
     });
   };

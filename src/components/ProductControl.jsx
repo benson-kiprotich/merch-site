@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import AddUpdateProductForm from './AddUpdateProductForm';
 import ProductTable from './ProductTable';
 import Button from './Button';
+import * as a from './../actions';
 
 class ProductControl extends React.Component {
   constructor(props) {
@@ -29,14 +30,7 @@ class ProductControl extends React.Component {
 
   handleAddUpdateProduct = (newProduct) => {
     const { dispatch } = this.props;
-    const { id, name, quantity, description } = newProduct;
-    const action = {
-      type: 'ADD_PRODUCT',
-      id,
-      name,
-      quantity,
-      description,
-    };
+    const action = a.addProduct(newProduct);
 
     dispatch(action);
     this.setState({
@@ -46,10 +40,8 @@ class ProductControl extends React.Component {
 
   handleBuyProduct = (productId) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'BUY_PRODUCT',
-      id: productId,
-    };
+    const action = a.buyProduct(productId);
+
     dispatch(action);
 
     this.setState({
@@ -59,10 +51,7 @@ class ProductControl extends React.Component {
 
   handleRestockProduct = (productId) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'RESTOCK_PRODUCT',
-      id: productId,
-    };
+    const action = a.restockProduct();
     dispatch(action);
 
     this.setState({
@@ -72,10 +61,7 @@ class ProductControl extends React.Component {
 
   handleDeleteProduct = (productId) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'DELETE_PRODUCT',
-      id: productId,
-    };
+    const action = a.deleteProduct(productId);
     dispatch(action);
     this.setState({
       formVisibleOnPage: false,

@@ -56,8 +56,8 @@ const ProductTable = ({
   );
 };
 
-ProductTable.prototype = {
-  products: PropTypes.array,
+ProductTable.propTypes = {
+  products: PropTypes.object,
   toggleFormVisibility: PropTypes.func,
   buyProduct: PropTypes.func,
   restockProduct: PropTypes.func,

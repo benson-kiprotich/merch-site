@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import AddUpdateProductForm from './AddUpdateProductForm';
 import ProductTable from './ProductTable';
@@ -10,73 +11,96 @@ class ProductControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      product: {},
-      mainProductList: {},
+      selectedProduct: {},
     };
   }
 
   handleClick = (productId = null) => {
-    let updateProduct = {};
+    let selectedProduct = {};
     if (productId != null) {
-      updateProduct = this.state.mainProductList[productId];
+      selectedProduct = this.props.mainProductList[productId];
     }
 
     this.setState((prevState) => ({
       formVisibleOnPage: !prevState.formVisibleOnPage,
-      product: updateProduct,
+      selectedProduct: selectedProduct,
     }));
   };
 
   handleAddUpdateProduct = (newProduct) => {
-    let newMainProductList = this.state.mainProductList;
-    newMainProductList[newProduct.id] = newProduct;
+    const { dispatch } = this.props;
+    const { id, name, quantity, description } = newProduct;
+    const action = {
+      type: 'ADD_PRODUCT',
+      id,
+      name,
+      quantity,
+      description,
+    };
 
+    dispatch(action);
     this.setState({
-      mainProductList: newMainProductList,
       formVisibleOnPage: false,
     });
   };
 
   handleBuyProduct = (productId) => {
-    let updatedProductList = this.state.mainProductList;
-    let updateProduct = updatedProductList[productId];
-    if (updateProduct) {
-      if (updateProduct.quantity > 0) {
-        updateProduct.quantity--;
-      } else {
-        alert('Out of stock');
-      }
-    } else {
-      alert('Product does not exist');
-    }
+    // let updatedProductList = this.state.mainProductList;
+    // let updateProduct = updatedProductList[productId];
+    // if (updateProduct) {
+    //   if (updateProduct.quantity > 0) {
+    //     updateProduct.quantity--;
+    //   } else {
+    //     alert('Out of stock');
+    //   }
+    // } else {
+    //   alert('Product does not exist');
+    // }
+    const { dispatch } = this.props;
+    const action = {
+      type: 'BUY_PRODUCT',
+      id: productId,
+    };
+    dispatch(action);
 
     this.setState({
-      mainProductList: updatedProductList,
+      // mainProductList: updatedProductList,
       formVisibleOnPage: false,
     });
   };
 
   handleRestockProduct = (productId) => {
-    let updatedProductList = this.state.mainProductList;
-    let updateProduct = updatedProductList[productId];
-    if (updateProduct) {
-      updateProduct.quantity = Number(updateProduct.quantity) + 10;
-    } else {
-      alert('Product does not exist');
-    }
+    // let updatedProductList = this.state.mainProductList;
+    // let updateProduct = updatedProductList[productId];
+    // if (updateProduct) {
+    //   updateProduct.quantity = Number(updateProduct.quantity) + 10;
+    // } else {
+    //   alert('Product does not exist');
+    // }
+    const { dispatch } = this.props;
+    const action = {
+      type: 'RESTOCK_PRODUCT',
+      id: productId,
+    };
+    dispatch(action);
 
     this.setState({
-      mainProductList: updatedProductList,
+      // mainProductList: updatedProductList,
       formVisibleOnPage: false,
     });
   };
 
   handleDeleteProduct = (productId) => {
-    let newMainProductList = this.state.mainProductList;
-    delete newMainProductList[productId];
-
+    // let newMainProductList = this.state.mainProductList;
+    // delete newMainProductList[productId];
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DELETE_PRODUCT',
+      id: productId,
+    };
+    dispatch(action);
     this.setState({
-      mainProductList: newMainProductList,
+      // mainProductList: newMainProductList,
       formVisibleOnPage: false,
     });
   };
@@ -88,14 +112,14 @@ class ProductControl extends React.Component {
       currentVisibleState = (
         <AddUpdateProductForm
           addUpdateProduct={this.handleAddUpdateProduct}
-          updateProduct={this.state.product}
+          updateProduct={this.state.selectedProduct}
         />
       );
       buttonText = 'Return to Product List';
     } else {
       currentVisibleState = (
         <ProductTable
-          products={this.state.mainProductList}
+          products={this.props.mainProductList}
           toggleFormVisibility={this.handleClick}
           buyProduct={this.handleBuyProduct}
           restockProduct={this.handleRestockProduct}
@@ -114,5 +138,15 @@ class ProductControl extends React.Component {
   }
 }
 
-ProductControl = connect()(ProductControl);
+ProductControl.propTypes = {
+  mainProductList: PropTypes.object,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    mainProductList: state,
+  };
+};
+
+ProductControl = connect(mapStateToProps)(ProductControl);
 export default ProductControl;

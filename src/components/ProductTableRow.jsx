@@ -98,11 +98,11 @@ function ProductTableRow({
   );
 }
 
-ProductTableRow.prototype = {
+ProductTableRow.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  desciption: PropTypes.string.isRequired,
-  quantity: PropTypes.number,
+  description: PropTypes.string.isRequired,
+  quantity: PropTypes.string.isRequired,
   toggleFormVisibility: PropTypes.func,
   buyProduct: PropTypes.func,
   restockProduct: PropTypes.func,

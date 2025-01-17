@@ -77,7 +77,7 @@ class ProductControl extends React.Component {
     if (updateProductIndex > -1) {
       updatedProductList = this.state.mainProductList;
       let updateProduct = updatedProductList[updateProductIndex];
-      updateProduct.quantity += 10;
+      updateProduct.quantity = Number(updateProduct.quantity) + 10;
     } else {
       alert('Product does not exist');
     }
